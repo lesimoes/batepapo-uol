@@ -2,7 +2,9 @@ const urlChat = "https://mock-api.bootcamp.respondeai.com.br/api/v3/uol";
 
 let nome;
 let idIntervalCarregarMensagens;
-
+let participantes = []
+let destinatario = "Todos";
+let messageType = "message";
 
 function iniciarChat () {
 
@@ -13,6 +15,8 @@ function iniciarChat () {
     });
     entrarSala();
     atualizarMensagensStatus();
+    carregarListaParticipantes();
+    setInterval(carregarListaParticipantes, 10000);
 }
 
 function entrarSala () {
@@ -46,7 +50,7 @@ function renderizarMensagens (resposta) {
         if (resposta.data[i].type !== "private_message") {
             mensagens.push(resposta.data[i]);
         }
-        if (resposta.data[i].type === "private_message" && resposta.data[i].to === nome) {            
+        if (resposta.data[i].type === "private_message" && (resposta.data[i].to === nome || resposta.data[i].from === nome)) {            
             mensagens.push(resposta.data[i]);
         }
     }
@@ -104,19 +108,78 @@ function rolarChatParaFinal() {
 
 
 
-function enviarMensagem (event) {
+function enviarMensagem () {
 
     const inputMessage = document.querySelector(".input-mensagem");
     
     const mensagemBody = {
         from: nome,
-        to: "Todos",
+        to: destinatario || "Todos",
         text: inputMessage.value,
-        type: "message",
+        type: messageType,
     }
     
     inputMessage.value = "";
-    axios.post(`${urlChat}/messages`, mensagemBody);
+    const promise = axios.post(`${urlChat}/messages`, mensagemBody);
+    promise.then(carregarMensagens);
+    promise.catch(atualizarPagina);
+}
+
+
+function abrirMenu () {
+    const menu = document.querySelector(".menu");
+    const fundoChat = document.querySelector(".menu-fundo");
+
+    menu.classList.toggle("escondido");
+    fundoChat.classList.toggle("fundo-escondido");
+
+}
+
+function carregarListaParticipantes () {
+   const promise = axios.get(`${urlChat}/participants`);
+   promise.then(renderizarParticipantes);
+}
+
+function renderizarParticipantes (resposta) {
+    const ul = document.querySelector(".contatos");
+    ul.innerHTML = "";
+
+    let classeParticipants = "";
+
+    resposta.data.push({
+        name: "Todos",
+    })
+
+    for (let i = 0 ; i < resposta.data.length ; i ++) {
+        if(destinatario === resposta.data[i].name) {
+            classeParticipants = "selecionado";
+        } else {
+            classeParticipants = "";
+        }
+
+        ul.innerHTML += ` <li class="${classeParticipants}" onclick="selecionarDestinatario(this)">
+        <ion-icon name='person-circle'></ion-icon>
+        <span class='nome'>${resposta.data[i].name}</span>
+        <ion-icon class='check' name='checkmark-outline'></ion-icon>
+      </li>`;    
+    }    
+
+}
+
+function selecionarDestinatario (elemento) {
+    destinatario = elemento.querySelector(".nome").innerHTML;
+    carregarListaParticipantes();
+    document.querySelector(".enviando").innerHTML = `Enviando para ${destinatario}...`;
+}
+
+function atualizarPagina () {
+    window.location.reload();
+}
+
+function mudarVisibilidade (elemento, mode){
+    document.querySelector(".visibilidades .selecionado").classList.remove("selecionado");
+    elemento.classList.add("selecionado");
+    messageType = mode;
 }
 
 carregarMensagens();
