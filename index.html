@@ -10,11 +10,11 @@
 </head>
 
 <body>
-  <div class="menu-fundo fundo-escondido" onclick="abrirMenu()"></div>
+  <div class="menu-fundo fundo-escondido"></div>
   
   <header>
     <img src="assets/imagens/logo.png">
-    <ion-icon name="people-sharp" onclick="abrirMenu()"></ion-icon>
+    <ion-icon name="people-sharp"></ion-icon>
   </header>
 
   <main>
@@ -48,7 +48,7 @@
       <input placeholder="Escreva aqui..." class="input-mensagem"></input>
       <span class="enviando">Enviando para Todos</span>
     </div>
-    <button onclick="enviarMensagem()">
+    <button>
       <ion-icon name="paper-plane-outline"></ion-icon>
     </button>
   </footer>
@@ -60,11 +60,11 @@
     </ul>
     <h3 class="titulo-menu">Escolha a visibilidade:</h3>
     <ul class="visibilidades">
-      <li class="visibilidade-publico selecionado" onclick="mudarVisibilidade(this, 'message')">
+      <li class="visibilidade-publico selecionado">
         <ion-icon name="lock-open"></ion-icon>Público<ion-icon class="check" name="checkmark-outline">
         </ion-icon>
       </li>
-      <li class="visibilidade-privado" onclick="mudarVisibilidade(this, 'private_message')">
+      <li class="visibilidade-privado">
         <ion-icon name="lock-closed"></ion-icon>Reservadamente<ion-icon class="check" name="checkmark-outline">
         </ion-icon>
       </li>
