@@ -5,6 +5,10 @@ const TIME_10S = 10 * 1000;
 
 console.log('Modificação....')
 
+function hello () {
+    console.log('hello')
+}
+
 let nome;
 let participantes = [];
 let destinatario = 'Todos';
