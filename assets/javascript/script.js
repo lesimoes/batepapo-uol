@@ -8,6 +8,9 @@ function hello () {
     if (!false) {
         console.log('oiii, eu sou true');
     }
+    if (true) {
+        console.log('oiii, eu sou true');
+    }
     console.log('hello')
 }
 
