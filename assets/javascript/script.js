@@ -3,7 +3,6 @@ const TIME_3S = 3 * 1000;
 const TIME_5S = 5 * 1000;
 const TIME_10S = 10 * 1000;
 
-console.log('Modificação....')
 
 let nome;
 let participantes = [];
