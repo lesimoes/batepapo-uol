@@ -5,6 +5,9 @@ const TIME_10S = 10 * 1000;
 
 
 function hello () {
+    if (true) {
+        console.log('oiii, eu sou true');
+    }
     console.log('hello')
 }
 
