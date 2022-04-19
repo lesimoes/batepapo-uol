@@ -4,6 +4,10 @@ const TIME_5S = 5 * 1000;
 const TIME_10S = 10 * 1000;
 
 
+function hello () {
+    console.log('hello')
+}
+
 let nome;
 let participantes = [];
 let destinatario = 'Todos';
