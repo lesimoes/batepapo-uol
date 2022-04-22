@@ -8,52 +8,21 @@
   <link href="assets/stylesheet/reset.css" rel="stylesheet">
   <link href="assets/stylesheet/style.css" rel="stylesheet">
 
-  <meta name="description" content="Novo Bate papo UOL">
-  <meta name="keywords" content="Bate papo, UOL">
-  <meta name="author" content="Lele">
 </head>
 
 <body>
   <div class="menu-fundo fundo-escondido" onclick="abrirMenu()"></div>
-  
-  <header>
-    <img src="assets/imagens/logo.png">
-    <ion-icon name="people-sharp" onclick="abrirMenu()"></ion-icon>
-  </header>
 
   <main>
     <ul class="mensagens-container">
       
     </ul>
-  </main>
 
-  <footer>
-    <div class="entrada-mensagem">
-      <input placeholder="Escreva aqui..." class="input-mensagem"></input>
-      <span class="enviando">Enviando para Todos</span>
+    <div>
+      legal
     </div>
-    <button onclick="enviarMensagem()">
-      <ion-icon name="paper-plane-outline"></ion-icon>
-    </button>
-  </footer>
 
-  <aside class="menu escondido">
-    <h3 class="titulo-menu">Escolha um contato para enviar mensagem:</h3>
-    <ul class="contatos">
-    
-    </ul>
-    <h3 class="titulo-menu">Escolha a visibilidade:</h3>
-    <ul class="visibilidades">
-      <li class="visibilidade-publico selecionado" onclick="selecionarVisibilidade(this, 'message')">
-        <ion-icon name="lock-open"></ion-icon>Público<ion-icon class="check">
-        </ion-icon>
-      </li>
-      <li class="visibilidade-privado" onclick="selecionarVisibilidade(this, 'private_message')">
-        <ion-icon name="lock-closed"></ion-icon>Reservadamente<ion-icon class="check" name="checkmark-outline">
-        </ion-icon>
-      </li>
-    </ul>
-  </aside>
+  </main>
 
   <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

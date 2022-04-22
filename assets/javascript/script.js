@@ -15,6 +15,7 @@ let nome;
 let participantes = [];
 let destinatario = 'Todos';
 
+//Exec 2
 function iniciarChat () {
 
     lerMensagens();
@@ -38,6 +39,7 @@ function resetarPagina () {
     window.location.reload();
 }
 
+//Exec 1
 function entrarNaSala () {
     nome = prompt('Qual é a sua graça?');
     //nome = 'narutin';
@@ -47,6 +49,7 @@ function entrarNaSala () {
     promise.catch(resetarPagina)
 }
 
+//Exec 3
 function lerMensagens () {
     const promise = axios.get(`${API}/messages`);
     promise.then(renderizarMensagens)
@@ -119,7 +122,7 @@ function enviarMensagem () {
     }
 
 }
-
+//Exec 4
 function renderizarMensagens (resposta) {
 
     const containerMensagens = document.querySelector('.mensagens-container');
